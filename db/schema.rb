@@ -16,12 +16,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_125247) do
 
   create_table "bookings", force: :cascade do |t|
     t.string "name"
-    t.string "phone"
-    t.bigint "doctor_id", null: false
+    t.string "place"
     t.bigint "hospital_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["doctor_id"], name: "index_bookings_on_doctor_id"
     t.index ["hospital_id"], name: "index_bookings_on_hospital_id"
   end
 
@@ -38,13 +36,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_125247) do
   create_table "hospitals", force: :cascade do |t|
     t.string "name"
     t.string "place"
-    t.integer "bookings"
-    t.integer "doctors"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "bookings", "doctors"
   add_foreign_key "bookings", "hospitals"
   add_foreign_key "doctors", "hospitals"
 end

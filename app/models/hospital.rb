@@ -1,4 +1,3 @@
 class Hospital < ApplicationRecord
-  has_many :doctors
-  has_many :bookings
+  has_many :doctor
 end
